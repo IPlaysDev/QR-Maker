@@ -96,7 +96,7 @@
 }
 
 @utility text-gradient {
-  background: linear-gradient(135deg, oklch(0.98 0.01 240), oklch(0.75 0.18 240));
+  background: linear-gradient(135deg, oklch(1 0 0), oklch(0.70 0 0));
   background-clip: text;
   color: transparent;
 }
@@ -114,8 +114,8 @@
   50% { transform: translate(-25px, 25px) scale(1.08); }
 }
 @keyframes breathe {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 30px -8px oklch(0.72 0.22 240 / 45%); }
-  50% { transform: scale(1.04); box-shadow: 0 0 55px -6px oklch(0.72 0.22 240 / 75%); }
+  0%, 100% { transform: scale(1); box-shadow: 0 0 30px -8px oklch(1 0 0 / 30%); }
+  50% { transform: scale(1.04); box-shadow: 0 0 55px -6px oklch(1 0 0 / 55%); }
 }
 @keyframes pulse-slow {
   0%, 100% { opacity: 0.55; transform: scale(1); }
