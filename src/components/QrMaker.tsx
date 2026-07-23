@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { generateQrDataUrl, isValidUrl, normalizeUrl } from "@/lib/qr";
 import { Capacitor } from "@capacitor/core";
 import { QrLogo } from "@/components/QrLogo";
@@ -53,11 +53,20 @@ async function shareQr(dataUrl: string) {
 }
 
 export function QrMaker() {
+  const navigate = useNavigate();
   const [url, setUrl] = useState("");
   const [qr, setQr] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+  const [exiting, setExiting] = useState(false);
+
+  function goToCredits(e: React.MouseEvent) {
+    e.preventDefault();
+    if (exiting) return;
+    setExiting(true);
+    setTimeout(() => navigate({ to: "/credits" }), 300);
+  }
 
   async function handleGenerate() {
     setError(null);
@@ -104,7 +113,11 @@ export function QrMaker() {
   }
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden px-5 py-8 flex flex-col items-center">
+    <div
+      className={`relative min-h-screen w-full overflow-hidden px-5 py-8 flex flex-col items-center ${
+        exiting ? "animate-page-out-left" : "animate-page-in-left"
+      }`}
+    >
       {/* Ambient glass orbs */}
       <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-primary/25 blur-3xl animate-float-slow" />
       <div className="pointer-events-none absolute top-1/3 -right-32 h-80 w-80 rounded-full bg-accent/20 blur-3xl animate-float-slower" />
@@ -124,6 +137,7 @@ export function QrMaker() {
         </div>
         <Link
           to="/credits"
+          onClick={goToCredits}
           className="glass-card px-3 py-1.5 text-xs font-medium text-foreground/90 rounded-full active:scale-95 transition hover:scale-105"
         >
           Credits

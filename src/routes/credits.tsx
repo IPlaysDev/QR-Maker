@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Capacitor } from "@capacitor/core";
 import { QrLogo } from "@/components/QrLogo";
 
@@ -26,18 +27,33 @@ async function openGithub(e: React.MouseEvent) {
 }
 
 function Credits() {
+  const navigate = useNavigate();
+  const [exiting, setExiting] = useState(false);
+
+  function goBack(e: React.MouseEvent) {
+    e.preventDefault();
+    if (exiting) return;
+    setExiting(true);
+    setTimeout(() => navigate({ to: "/" }), 300);
+  }
+
   return (
-    <div className="relative min-h-screen w-full overflow-hidden px-5 py-8 flex flex-col items-center">
+    <div
+      className={`relative min-h-screen w-full overflow-hidden px-5 py-8 flex flex-col items-center ${
+        exiting ? "animate-page-out-right" : "animate-page-in-right"
+      }`}
+    >
       <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-80 w-80 rounded-full bg-primary/25 blur-3xl animate-float-slow" />
       <div className="pointer-events-none absolute bottom-0 -right-24 h-72 w-72 rounded-full bg-accent/20 blur-3xl animate-float-slower" />
 
       <header className="relative w-full max-w-md flex items-center justify-between mb-8">
-        <Link
-          to="/"
+        <a
+          href="/"
+          onClick={goBack}
           className="glass-card px-3 py-1.5 text-xs font-medium rounded-full active:scale-95 transition hover:scale-105"
         >
           ← Back
-        </Link>
+        </a>
         <h1 className="text-sm font-semibold text-gradient">Credits</h1>
         <div className="w-14" />
       </header>
