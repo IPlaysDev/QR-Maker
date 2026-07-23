@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Capacitor } from "@capacitor/core";
+import { QrLogo } from "@/components/QrLogo";
 
 export const Route = createFileRoute("/credits")({
   head: () => ({
@@ -26,11 +27,14 @@ async function openGithub(e: React.MouseEvent) {
 
 function Credits() {
   return (
-    <div className="min-h-screen w-full px-5 py-8 flex flex-col items-center">
-      <header className="w-full max-w-md flex items-center justify-between mb-8">
+    <div className="relative min-h-screen w-full overflow-hidden px-5 py-8 flex flex-col items-center">
+      <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-80 w-80 rounded-full bg-primary/25 blur-3xl animate-float-slow" />
+      <div className="pointer-events-none absolute bottom-0 -right-24 h-72 w-72 rounded-full bg-accent/20 blur-3xl animate-float-slower" />
+
+      <header className="relative w-full max-w-md flex items-center justify-between mb-8">
         <Link
           to="/"
-          className="glass-card px-3 py-1.5 text-xs font-medium rounded-full active:scale-95 transition"
+          className="glass-card px-3 py-1.5 text-xs font-medium rounded-full active:scale-95 transition hover:scale-105"
         >
           ← Back
         </Link>
@@ -38,13 +42,19 @@ function Credits() {
         <div className="w-14" />
       </header>
 
-      <main className="w-full max-w-md flex flex-col gap-5">
-        <section className="glass-card glow-primary p-8 flex flex-col items-center gap-3 text-center">
-          <div className="h-16 w-16 rounded-2xl gradient-primary grid place-items-center text-2xl font-bold text-primary-foreground">
-            I
+      <main className="relative w-full max-w-md flex flex-col gap-5">
+        <section className="glass-card glow-primary p-8 flex flex-col items-center gap-4 text-center animate-in fade-in zoom-in-95 duration-500">
+          <div className="relative h-24 w-24 rounded-3xl glass-card grid place-items-center animate-breathe">
+            <div className="absolute inset-0 rounded-3xl gradient-primary opacity-30 blur-md" />
+            <QrLogo className="relative h-12 w-12 text-primary" />
           </div>
-          <p className="text-xs uppercase tracking-widest text-muted-foreground">Made by</p>
-          <h2 className="text-2xl font-bold text-gradient">IPlaysDev</h2>
+          <p className="text-[11px] uppercase tracking-[0.35em] text-primary/90 font-semibold">
+            Made by
+          </p>
+          <h2 className="text-4xl font-extrabold text-gradient tracking-tight">IPlaysDev</h2>
+          <p className="text-xs text-muted-foreground max-w-[220px]">
+            Crafted with care · Premium QR generation for Android
+          </p>
         </section>
 
         <a
@@ -52,7 +62,7 @@ function Credits() {
           target="_blank"
           rel="noreferrer"
           onClick={openGithub}
-          className="glass-card p-5 flex items-center justify-between active:scale-[0.99] transition"
+          className="glass-card p-5 flex items-center justify-between active:scale-[0.99] transition hover:scale-[1.02] animate-in fade-in slide-in-from-bottom-3 duration-500"
         >
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 rounded-xl bg-secondary grid place-items-center">
@@ -69,9 +79,10 @@ function Credits() {
         </a>
 
         <p className="text-center text-xs text-muted-foreground mt-2">
-          QR Maker · Generate & Share QR Codes Instantly
+          QR Maker · Generate &amp; Share QR Codes Instantly
         </p>
       </main>
     </div>
   );
 }
+
