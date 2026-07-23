@@ -1,0 +1,93 @@
+# Building QR Maker as an Android APK
+
+QR Maker is packaged with **Capacitor** so the same codebase runs as a web preview and as a native Android app.
+
+## Prerequisites
+
+- Node.js 20+ and `bun` (or npm/pnpm)
+- **Android Studio** (Hedgehog or newer) with:
+  - Android SDK Platform 34+
+  - Android SDK Build-Tools
+  - A configured emulator or a physical device with USB debugging
+- Java 17 (bundled with recent Android Studio)
+
+## 1. Install dependencies
+
+```bash
+bun install
+```
+
+## 2. Build the web assets
+
+Capacitor copies the contents of `dist/` into the Android project.
+
+```bash
+bun run build
+```
+
+## 3. Add the Android platform (first time only)
+
+```bash
+npx cap add android
+```
+
+This creates the `android/` folder containing a full Gradle project.
+
+## 4. Sync web assets into Android
+
+Run this after every web build:
+
+```bash
+npx cap sync android
+```
+
+## 5. Open in Android Studio
+
+```bash
+npx cap open android
+```
+
+In Android Studio:
+
+1. Wait for Gradle sync to finish.
+2. Select a device / emulator.
+3. Press **Run ▶** to install a debug APK, **or**
+4. **Build → Build Bundle(s) / APK(s) → Build APK(s)** to produce a release-style APK at
+   `android/app/build/outputs/apk/debug/app-debug.apk`.
+
+## 6. Producing a signed release APK / AAB (Play Store)
+
+1. In Android Studio: **Build → Generate Signed Bundle / APK…**
+2. Choose **Android App Bundle** (recommended for Play Store) or **APK**.
+3. Create a new keystore (save the `.jks` and passwords safely) or use an existing one.
+4. Select the **release** build variant.
+5. Android Studio outputs the signed artifact under
+   `android/app/release/` (`app-release.aab` or `app-release.apk`).
+
+## App identity
+
+- App ID: `dev.iplays.qrmaker`
+- App Name: `QR Maker`
+- Background: `#0b1020` (dark, matches glass UI)
+
+Edit these in `capacitor.config.ts`, then re-run `npx cap sync android`.
+
+## Icons & splash screens
+
+Place a 1024×1024 `icon.png` and a 2732×2732 `splash.png` in a `resources/` folder and run:
+
+```bash
+bunx @capacitor/assets generate --android
+```
+
+This regenerates all Android launcher icons and splash densities.
+
+## Permissions
+
+The app only uses:
+
+- Storage / Documents (via `@capacitor/filesystem`) to save the PNG
+- Native share sheet (via `@capacitor/share`) — no extra permission needed
+- In-app browser (via `@capacitor/browser`) to open the GitHub credits link
+
+No camera, location, or network permissions beyond the default INTERNET are required.
