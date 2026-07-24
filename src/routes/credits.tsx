@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Capacitor } from "@capacitor/core";
-import { QrLogo } from "@/components/QrLogo";
+import { QrLogo, QrWordmark } from "@/components/QrLogo";
+import { Github, Instagram, Youtube } from "lucide-react";
 
 export const Route = createFileRoute("/credits")({
   head: () => ({
     meta: [
       { title: "Credits – QR Maker" },
-      { name: "description", content: "Credits for QR Maker – made by IPlaysDev." },
+      { name: "description", content: "QR Maker – Developed by IPlaysDev, an Onix Labs Project." },
       { property: "og:title", content: "Credits – QR Maker" },
-      { property: "og:description", content: "Credits for QR Maker – made by IPlaysDev." },
+      { property: "og:description", content: "QR Maker – Developed by IPlaysDev, an Onix Labs Project." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -17,14 +18,41 @@ export const Route = createFileRoute("/credits")({
   component: Credits,
 });
 
-async function openGithub(e: React.MouseEvent) {
-  const url = "https://github.com/IPlaysDev";
+async function openLink(e: React.MouseEvent, url: string) {
   if (Capacitor.isNativePlatform()) {
     e.preventDefault();
     const { Browser } = await import("@capacitor/browser");
     await Browser.open({ url });
   }
 }
+
+type SocialLink = {
+  label: string;
+  handle: string;
+  url: string;
+  Icon: React.ComponentType<{ className?: string }>;
+};
+
+const LINKS: SocialLink[] = [
+  {
+    label: "GitHub",
+    handle: "github.com/IPlaysDev",
+    url: "https://github.com/IPlaysDev",
+    Icon: Github,
+  },
+  {
+    label: "Instagram",
+    handle: "@onix.labs.official",
+    url: "https://www.instagram.com/onix.labs.official",
+    Icon: Instagram,
+  },
+  {
+    label: "YouTube",
+    handle: "@onix.labs.official",
+    url: "https://youtube.com/@onix.labs.official",
+    Icon: Youtube,
+  },
+];
 
 function Credits() {
   const navigate = useNavigate();
@@ -43,8 +71,8 @@ function Credits() {
         exiting ? "animate-page-out-right" : "animate-page-in-right"
       }`}
     >
-      <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-80 w-80 rounded-full bg-primary/25 blur-3xl animate-float-slow" />
-      <div className="pointer-events-none absolute bottom-0 -right-24 h-72 w-72 rounded-full bg-accent/20 blur-3xl animate-float-slower" />
+      <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-80 w-80 rounded-full bg-white/10 blur-3xl animate-float-slow" />
+      <div className="pointer-events-none absolute bottom-0 -right-24 h-72 w-72 rounded-full bg-white/[0.06] blur-3xl animate-float-slower" />
 
       <header className="relative w-full max-w-md flex items-center justify-between mb-8">
         <a
@@ -54,51 +82,60 @@ function Credits() {
         >
           ← Back
         </a>
-        <h1 className="text-sm font-semibold text-gradient">Credits</h1>
+        <h1 className="text-sm font-semibold tracking-[0.3em] uppercase text-foreground/80">Credits</h1>
         <div className="w-14" />
       </header>
 
-      <main className="relative w-full max-w-md flex flex-col gap-5">
-        <section className="glass-card glow-primary p-8 flex flex-col items-center gap-4 text-center animate-in fade-in zoom-in-95 duration-500">
-          <div className="relative h-24 w-24 rounded-3xl glass-card grid place-items-center animate-breathe">
-            <div className="absolute inset-0 rounded-3xl gradient-primary opacity-30 blur-md" />
-            <QrLogo className="relative h-12 w-12 text-primary" />
+      <main className="relative w-full max-w-md flex flex-col gap-5 items-center text-center">
+        <section className="glass-card glow-primary p-8 w-full flex flex-col items-center gap-5 animate-in fade-in zoom-in-95 duration-500">
+          <div className="relative h-24 w-24 rounded-3xl glass-card grid place-items-center animate-breathe p-4">
+            <div className="absolute inset-0 rounded-3xl bg-white/5 blur-md" />
+            <QrLogo className="relative h-full w-full text-foreground" />
           </div>
-          <p className="text-[11px] uppercase tracking-[0.35em] text-primary/90 font-semibold">
-            Made by
-          </p>
-          <h2 className="text-4xl font-extrabold text-gradient tracking-tight">IPlaysDev</h2>
-          <p className="text-xs text-muted-foreground max-w-[220px]">
-            Crafted with care · Premium QR generation for Android
-          </p>
+
+          <QrWordmark className="h-10 w-auto text-foreground" />
+
+          <div className="flex flex-col gap-2 items-center">
+            <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Developed by</p>
+            <h2 className="text-3xl font-extrabold text-gradient tracking-tight">IPlaysDev</h2>
+          </div>
+
+          <div className="h-px w-16 bg-white/15" />
+
+          <div className="flex flex-col gap-1 items-center">
+            <p className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground">An</p>
+            <h3 className="text-xl font-bold text-gradient tracking-tight">Onix Labs</h3>
+            <p className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground">Project</p>
+          </div>
         </section>
 
-        <a
-          href="https://github.com/IPlaysDev"
-          target="_blank"
-          rel="noreferrer"
-          onClick={openGithub}
-          className="glass-card p-5 flex items-center justify-between active:scale-[0.99] transition hover:scale-[1.02] animate-in fade-in slide-in-from-bottom-3 duration-500"
-        >
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-secondary grid place-items-center">
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
-                <path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.11.79-.25.79-.55v-2c-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.04 1.77 2.72 1.26 3.38.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.27 5.69.41.35.78 1.05.78 2.12v3.14c0 .3.21.67.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
-              </svg>
-            </div>
-            <div>
-              <p className="text-sm font-semibold">GitHub</p>
-              <p className="text-xs text-muted-foreground">github.com/IPlaysDev</p>
-            </div>
-          </div>
-          <span className="text-muted-foreground">↗</span>
-        </a>
+        <section className="w-full flex flex-col gap-3 animate-in fade-in slide-in-from-bottom-3 duration-500">
+          {LINKS.map(({ label, handle, url, Icon }, i) => (
+            <a
+              key={label}
+              href={url}
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => openLink(e, url)}
+              style={{ animationDelay: `${100 + i * 80}ms` }}
+              className="glass-card p-4 flex items-center gap-4 active:scale-[0.99] transition hover:scale-[1.02] hover:border-white/30 animate-in fade-in slide-in-from-bottom-2 fill-mode-both duration-500"
+            >
+              <div className="h-11 w-11 rounded-xl bg-white/10 border border-white/15 grid place-items-center shrink-0">
+                <Icon className="h-5 w-5 text-foreground" />
+              </div>
+              <div className="flex-1 text-left min-w-0">
+                <p className="text-sm font-semibold">{label}</p>
+                <p className="text-xs text-muted-foreground truncate">{handle}</p>
+              </div>
+              <span className="text-muted-foreground">↗</span>
+            </a>
+          ))}
+        </section>
 
-        <p className="text-center text-xs text-muted-foreground mt-2">
+        <p className="text-center text-[11px] text-muted-foreground mt-3 tracking-wider">
           QR Maker · Generate &amp; Share QR Codes Instantly
         </p>
       </main>
     </div>
   );
 }
-

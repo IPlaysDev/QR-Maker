@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { generateQrDataUrl, isValidUrl, normalizeUrl } from "@/lib/qr";
 import { Capacitor } from "@capacitor/core";
-import { QrLogo } from "@/components/QrLogo";
+import { QrLogo, QrWordmark } from "@/components/QrLogo";
 
 async function saveQr(dataUrl: string) {
   const filename = `qrmaker-${Date.now()}.png`;
@@ -125,13 +125,13 @@ export function QrMaker() {
 
       <header className="relative w-full max-w-md flex items-center justify-between mb-8">
         <div className="flex items-center gap-3">
-          <div className="glass-card glow-primary h-11 w-11 grid place-items-center rounded-2xl animate-breathe">
-            <QrLogo className="h-6 w-6 text-primary" />
+          <div className="glass-card glow-primary h-12 w-12 grid place-items-center rounded-2xl animate-breathe p-2">
+            <QrLogo className="h-full w-full text-foreground" />
           </div>
           <div>
-            <h1 className="text-lg font-semibold tracking-tight text-gradient">QR Maker</h1>
-            <p className="text-[11px] text-muted-foreground -mt-0.5">
-              Generate &amp; Share QR Codes Instantly
+            <QrWordmark className="h-6 w-auto text-foreground" />
+            <p className="text-[10px] text-muted-foreground mt-1 tracking-[0.2em] uppercase">
+              Generate · Share · Instantly
             </p>
           </div>
         </div>
