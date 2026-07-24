@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">QR Maker</string>
+    <string name="title_activity_main">QR Maker</string>
+    <string name="package_name">dev.iplays.qrmaker</string>
+    <string name="custom_url_scheme">dev.iplays.qrmaker</string>
+</resources>
