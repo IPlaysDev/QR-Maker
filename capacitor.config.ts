@@ -4,14 +4,14 @@ const config: CapacitorConfig = {
   appId: "dev.iplays.qrmaker",
   appName: "QR Maker",
   webDir: "dist",
-  backgroundColor: "#0b1020",
+  backgroundColor: "#000000",
   android: {
     allowMixedContent: false,
   },
   plugins: {
     SplashScreen: {
       launchShowDuration: 1200,
-      backgroundColor: "#0b1020",
+      backgroundColor: "#000000",
       androidSplashResourceName: "splash",
       showSpinner: false,
     },

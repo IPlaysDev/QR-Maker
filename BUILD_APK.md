@@ -25,13 +25,15 @@ Capacitor copies the contents of `dist/` into the Android project.
 bun run build
 ```
 
-## 3. Add the Android platform (first time only)
+## 3. Android platform (already included)
+
+The `android/` folder is committed to the repository, so you can skip
+`npx cap add android`. If you ever need to regenerate it from scratch, delete
+the folder and run:
 
 ```bash
 npx cap add android
 ```
-
-This creates the `android/` folder containing a full Gradle project.
 
 ## 4. Sync web assets into Android
 
