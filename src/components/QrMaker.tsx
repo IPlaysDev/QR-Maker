@@ -190,8 +190,8 @@ export function QrMaker() {
             {/* Placeholder */}
             {!qr && !busy && (
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-center px-6">
-                <div className="glass-card h-20 w-20 grid place-items-center rounded-3xl animate-breathe">
-                  <QrLogo className="h-10 w-10 text-primary" />
+                <div className="glass-card h-24 w-24 grid place-items-center rounded-3xl animate-breathe overflow-hidden p-2">
+                  <QrLogo className="h-full w-full object-contain" />
                 </div>
                 <p className="text-sm text-foreground/70 font-medium">
                   Your QR code will appear here
