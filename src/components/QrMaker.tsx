@@ -125,11 +125,11 @@ export function QrMaker() {
 
       <header className="relative w-full max-w-md flex items-center justify-between mb-8">
         <div className="flex items-center gap-3">
-          <div className="glass-card glow-primary h-12 w-12 grid place-items-center rounded-2xl animate-breathe p-2">
-            <QrLogo className="h-full w-full text-foreground" />
+          <div className="glass-card glow-primary h-12 w-12 grid place-items-center rounded-2xl animate-breathe overflow-hidden p-0">
+            <QrLogo className="h-full w-full object-contain" />
           </div>
           <div>
-            <QrWordmark className="h-6 w-auto text-foreground" />
+            <QrWordmark size="md" />
             <p className="text-[10px] text-muted-foreground mt-1 tracking-[0.2em] uppercase">
               Generate · Share · Instantly
             </p>
