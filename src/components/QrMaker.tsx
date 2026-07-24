@@ -125,11 +125,11 @@ export function QrMaker() {
 
       <header className="relative w-full max-w-md flex items-center justify-between mb-8">
         <div className="flex items-center gap-3">
-          <div className="glass-card glow-primary h-12 w-12 grid place-items-center rounded-2xl animate-breathe p-2">
-            <QrLogo className="h-full w-full text-foreground" />
+          <div className="glass-card glow-primary h-12 w-12 grid place-items-center rounded-2xl animate-breathe overflow-hidden p-0">
+            <QrLogo className="h-full w-full object-contain" />
           </div>
           <div>
-            <QrWordmark className="h-6 w-auto text-foreground" />
+            <QrWordmark size="md" />
             <p className="text-[10px] text-muted-foreground mt-1 tracking-[0.2em] uppercase">
               Generate · Share · Instantly
             </p>
@@ -190,8 +190,8 @@ export function QrMaker() {
             {/* Placeholder */}
             {!qr && !busy && (
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-center px-6">
-                <div className="glass-card h-20 w-20 grid place-items-center rounded-3xl animate-breathe">
-                  <QrLogo className="h-10 w-10 text-primary" />
+                <div className="glass-card h-24 w-24 grid place-items-center rounded-3xl animate-breathe overflow-hidden p-2">
+                  <QrLogo className="h-full w-full object-contain" />
                 </div>
                 <p className="text-sm text-foreground/70 font-medium">
                   Your QR code will appear here
@@ -205,8 +205,8 @@ export function QrMaker() {
                 <div className="relative h-20 w-20">
                   <div className="absolute inset-0 rounded-3xl border-2 border-primary/30" />
                   <div className="absolute inset-0 rounded-3xl border-2 border-transparent border-t-primary animate-spin" />
-                  <div className="absolute inset-2 glass-card rounded-2xl grid place-items-center">
-                    <QrLogo className="h-8 w-8 text-primary animate-pulse" />
+                  <div className="absolute inset-2 glass-card rounded-2xl grid place-items-center overflow-hidden p-1">
+                    <QrLogo className="h-full w-full object-contain animate-pulse" />
                   </div>
                 </div>
                 <p className="text-sm text-foreground/70 font-medium tracking-wide">
