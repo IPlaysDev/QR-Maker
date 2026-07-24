@@ -205,8 +205,8 @@ export function QrMaker() {
                 <div className="relative h-20 w-20">
                   <div className="absolute inset-0 rounded-3xl border-2 border-primary/30" />
                   <div className="absolute inset-0 rounded-3xl border-2 border-transparent border-t-primary animate-spin" />
-                  <div className="absolute inset-2 glass-card rounded-2xl grid place-items-center">
-                    <QrLogo className="h-8 w-8 text-primary animate-pulse" />
+                  <div className="absolute inset-2 glass-card rounded-2xl grid place-items-center overflow-hidden p-1">
+                    <QrLogo className="h-full w-full object-contain animate-pulse" />
                   </div>
                 </div>
                 <p className="text-sm text-foreground/70 font-medium tracking-wide">
