@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "vite build && node scripts/prepare-capacitor.mjs",
+    "cap:sync": "node scripts/prepare-capacitor.mjs && npx cap sync android",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
