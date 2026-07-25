@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-display: "Orbitron", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Michroma", "Chakra Petch", ui-sans-serif, system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -81,11 +81,28 @@
 }
 
 @utility glass-card {
-  background: var(--color-glass);
+  position: relative;
+  background:
+    radial-gradient(120% 80% at 0% 0%, oklch(1 0 0 / 10%) 0%, transparent 55%),
+    radial-gradient(120% 80% at 100% 100%, oklch(1 0 0 / 6%) 0%, transparent 60%),
+    var(--color-glass);
   border: 1px solid var(--color-glass-border);
-  backdrop-filter: blur(24px) saturate(160%);
-  box-shadow: var(--shadow-glass);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  box-shadow:
+    var(--shadow-glass),
+    inset 0 1px 0 0 oklch(1 0 0 / 18%),
+    inset 0 -1px 0 0 oklch(0 0 0 / 40%);
   border-radius: var(--radius-2xl);
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, oklch(1 0 0 / 12%) 0%, transparent 40%, transparent 60%, oklch(1 0 0 / 6%) 100%);
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
 }
 
 @utility glow-primary {
