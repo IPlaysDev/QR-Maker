@@ -22,14 +22,14 @@ export function QrWordmark({
 }) {
   const sizeClass =
     size === "lg"
-      ? "text-3xl"
+      ? "text-2xl tracking-[0.32em]"
       : size === "sm"
-        ? "text-sm"
-        : "text-lg";
+        ? "text-[11px] tracking-[0.36em]"
+        : "text-base tracking-[0.34em]";
   return (
     <span
-      className={`font-display font-black uppercase tracking-[0.28em] leading-none text-foreground ${sizeClass} ${className ?? ""}`}
-      style={{ fontFamily: "var(--font-display)" }}
+      className={`font-display uppercase leading-none text-foreground ${sizeClass} ${className ?? ""}`}
+      style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
     >
       QR Maker
     </span>
