@@ -13,7 +13,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "QR Maker – Generate & Share QR Codes Instantly" },
       {
         property: "og:description",
-        content: "Premium dark glassmorphism QR code generator for Android.",
+        content: "QR Maker is a premium dark glassmorphism QR code generator for Android. Paste any URL, generate a high-resolution QR, then save or share instantly.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
