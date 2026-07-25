@@ -3,7 +3,7 @@ import type { CapacitorConfig } from "@capacitor/cli";
 const config: CapacitorConfig = {
   appId: "dev.iplays.qrmaker",
   appName: "QR Maker",
-  webDir: "dist",
+  webDir: "dist/client",
   backgroundColor: "#000000",
   android: {
     allowMixedContent: false,
