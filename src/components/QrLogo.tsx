@@ -29,9 +29,10 @@ export function QrWordmark({
   return (
     <span
       className={`font-display leading-none text-foreground ${sizeClass} ${className ?? ""}`}
-      style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
+      style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
     >
       QR Maker
     </span>
+
   );
 }

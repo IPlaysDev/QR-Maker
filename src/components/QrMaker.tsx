@@ -130,10 +130,8 @@ export function QrMaker() {
           </div>
           <div>
             <QrWordmark size="md" />
-            <p className="text-[10px] text-muted-foreground mt-1 tracking-[0.2em] uppercase">
-              Generate · Share · Instantly
-            </p>
           </div>
+
         </div>
         <Link
           to="/credits"
