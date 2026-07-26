@@ -3,6 +3,7 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { generateQrDataUrl, isValidUrl, normalizeUrl } from "@/lib/qr";
 import { Capacitor } from "@capacitor/core";
 import { QrLogo, QrWordmark } from "@/components/QrLogo";
+import { sfx } from "@/lib/sfx";
 
 async function saveQr(dataUrl: string) {
   const filename = `qrmaker-${Date.now()}.png`;
