@@ -20,6 +20,7 @@ export const Route = createFileRoute("/credits")({
 });
 
 async function openLink(e: React.MouseEvent, url: string) {
+  sfx.click();
   if (Capacitor.isNativePlatform()) {
     e.preventDefault();
     const { Browser } = await import("@capacitor/browser");
