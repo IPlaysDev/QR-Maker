@@ -3,6 +3,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Capacitor } from "@capacitor/core";
 import { QrLogo, QrWordmark } from "@/components/QrLogo";
 import { Github, Instagram, Youtube } from "lucide-react";
+import { sfx } from "@/lib/sfx";
 
 export const Route = createFileRoute("/credits")({
   head: () => ({
