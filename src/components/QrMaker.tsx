@@ -3,6 +3,7 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { generateQrDataUrl, isValidUrl, normalizeUrl } from "@/lib/qr";
 import { Capacitor } from "@capacitor/core";
 import { QrLogo, QrWordmark } from "@/components/QrLogo";
+import { sfx } from "@/lib/sfx";
 
 async function saveQr(dataUrl: string) {
   const filename = `qrmaker-${Date.now()}.png`;
@@ -64,11 +65,13 @@ export function QrMaker() {
   function goToCredits(e: React.MouseEvent) {
     e.preventDefault();
     if (exiting) return;
+    sfx.click();
     setExiting(true);
     setTimeout(() => navigate({ to: "/credits" }), 300);
   }
 
   async function handleGenerate() {
+    sfx.click();
     setError(null);
     setToast(null);
     if (!isValidUrl(url)) {
@@ -85,6 +88,7 @@ export function QrMaker() {
         new Promise((r) => setTimeout(r, 650)),
       ]);
       setQr(data);
+      sfx.success();
     } catch {
       setError("Could not generate QR code");
     } finally {
@@ -94,8 +98,10 @@ export function QrMaker() {
 
   async function handleSave() {
     if (!qr) return;
+    sfx.click();
     try {
       const msg = await saveQr(qr);
+      sfx.saved();
       setToast(msg);
       setTimeout(() => setToast(null), 2200);
     } catch {
@@ -105,6 +111,7 @@ export function QrMaker() {
 
   async function handleShare() {
     if (!qr) return;
+    sfx.click();
     try {
       await shareQr(qr);
     } catch {

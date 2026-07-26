@@ -3,6 +3,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Capacitor } from "@capacitor/core";
 import { QrLogo, QrWordmark } from "@/components/QrLogo";
 import { Github, Instagram, Youtube } from "lucide-react";
+import { sfx } from "@/lib/sfx";
 
 export const Route = createFileRoute("/credits")({
   head: () => ({
@@ -19,6 +20,7 @@ export const Route = createFileRoute("/credits")({
 });
 
 async function openLink(e: React.MouseEvent, url: string) {
+  sfx.click();
   if (Capacitor.isNativePlatform()) {
     e.preventDefault();
     const { Browser } = await import("@capacitor/browser");
@@ -61,6 +63,7 @@ function Credits() {
   function goBack(e: React.MouseEvent) {
     e.preventDefault();
     if (exiting) return;
+    sfx.back();
     setExiting(true);
     setTimeout(() => navigate({ to: "/" }), 300);
   }
