@@ -71,6 +71,7 @@ export function QrMaker() {
   }
 
   async function handleGenerate() {
+    sfx.click();
     setError(null);
     setToast(null);
     if (!isValidUrl(url)) {
@@ -87,6 +88,7 @@ export function QrMaker() {
         new Promise((r) => setTimeout(r, 650)),
       ]);
       setQr(data);
+      sfx.success();
     } catch {
       setError("Could not generate QR code");
     } finally {
@@ -96,8 +98,10 @@ export function QrMaker() {
 
   async function handleSave() {
     if (!qr) return;
+    sfx.click();
     try {
       const msg = await saveQr(qr);
+      sfx.saved();
       setToast(msg);
       setTimeout(() => setToast(null), 2200);
     } catch {
@@ -107,6 +111,7 @@ export function QrMaker() {
 
   async function handleShare() {
     if (!qr) return;
+    sfx.click();
     try {
       await shareQr(qr);
     } catch {
