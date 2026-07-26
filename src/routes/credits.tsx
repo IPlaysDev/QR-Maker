@@ -63,6 +63,7 @@ function Credits() {
   function goBack(e: React.MouseEvent) {
     e.preventDefault();
     if (exiting) return;
+    sfx.back();
     setExiting(true);
     setTimeout(() => navigate({ to: "/" }), 300);
   }
