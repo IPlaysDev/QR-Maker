@@ -65,6 +65,7 @@ export function QrMaker() {
   function goToCredits(e: React.MouseEvent) {
     e.preventDefault();
     if (exiting) return;
+    sfx.click();
     setExiting(true);
     setTimeout(() => navigate({ to: "/credits" }), 300);
   }
