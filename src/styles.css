@@ -175,6 +175,9 @@
 @utility animate-pulse-slow {
   animation: pulse-slow 4s ease-in-out infinite;
 }
+@utility animate-float-logo {
+  animation: float-logo 4s ease-in-out infinite;
+}
 @utility animate-page-in-right {
   animation: page-in-right 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
