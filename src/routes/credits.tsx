@@ -90,9 +90,8 @@ function Credits() {
       </header>
 
       <main className="relative w-full max-w-md flex flex-col gap-5 items-center text-center">
-        <div className="relative w-full max-w-[260px] aspect-square grid place-items-center animate-breathe">
-          <div className="absolute inset-4 rounded-3xl bg-white/5 blur-2xl" />
-          <QrLogo className="relative h-full w-full object-contain" />
+        <div className="w-full max-w-[260px] animate-float-logo">
+          <QrLogo className="h-full w-full object-contain" />
         </div>
 
         <section className="glass-card glow-primary p-4 w-full flex flex-col items-center gap-5 animate-in fade-in zoom-in-95 duration-500">
