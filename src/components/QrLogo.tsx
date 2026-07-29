@@ -18,14 +18,16 @@ export function QrWordmark({
   size = "md",
 }: {
   className?: string;
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
 }) {
   const sizeClass =
-    size === "lg"
-      ? "text-3xl tracking-[0.12em]"
-      : size === "sm"
-        ? "text-xs tracking-[0.14em]"
-        : "text-lg tracking-[0.13em]";
+    size === "xl"
+      ? "text-2xl tracking-[0.12em]"
+      : size === "lg"
+        ? "text-3xl tracking-[0.12em]"
+        : size === "sm"
+          ? "text-xs tracking-[0.14em]"
+          : "text-lg tracking-[0.13em]";
   return (
     <span
       className={`font-display leading-none text-foreground ${sizeClass} ${className ?? ""}`}
