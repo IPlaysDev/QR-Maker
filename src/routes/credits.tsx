@@ -43,16 +43,16 @@ const LINKS: SocialLink[] = [
     Icon: Github,
   },
   {
-    label: "Instagram",
-    handle: "@iplaysdev",
-    url: "https://www.instagram.com/iplaysdev",
-    Icon: Instagram,
-  },
-  {
     label: "YouTube",
     handle: "@IPlaysDev",
     url: "https://www.youtube.com/@IPlaysDev",
     Icon: Youtube,
+  },
+  {
+    label: "Instagram",
+    handle: "@iplaysdev",
+    url: "https://www.instagram.com/iplaysdev",
+    Icon: Instagram,
   },
 ];
 
