@@ -44,14 +44,14 @@ const LINKS: SocialLink[] = [
   },
   {
     label: "Instagram",
-    handle: "@onix.labs.official",
-    url: "https://www.instagram.com/onix.labs.official",
+    handle: "@iplaysdev",
+    url: "https://www.instagram.com/iplaysdev",
     Icon: Instagram,
   },
   {
     label: "YouTube",
-    handle: "@onix.labs.official",
-    url: "https://youtube.com/@onix.labs.official",
+    handle: "@IPlaysDev",
+    url: "https://www.youtube.com/@IPlaysDev",
     Icon: Youtube,
   },
 ];
@@ -100,14 +100,6 @@ function Credits() {
           <div className="flex flex-col gap-2 items-center">
             <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Developed by</p>
             <h2 className="text-3xl font-extrabold text-gradient tracking-tight">IPlaysDev</h2>
-          </div>
-
-          <div className="h-px w-16 bg-white/15" />
-
-          <div className="flex flex-col gap-1 items-center">
-            <p className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground">An</p>
-            <h3 className="text-xl font-bold text-gradient tracking-tight">Onix Labs</h3>
-            <p className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground">Project</p>
           </div>
         </section>
 
