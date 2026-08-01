@@ -132,7 +132,7 @@ export function QrMaker() {
 
       <header className="relative w-full max-w-md flex items-center justify-between mb-8">
         <div className="flex items-center gap-3">
-          <QrLogo className="h-12 w-12 object-contain animate-breathe" />
+          <QrLogo className="h-14 w-auto object-contain animate-breathe bg-transparent" />
           <div>
             <QrWordmark size="xl" />
           </div>
