@@ -131,9 +131,9 @@ export function QrMaker() {
       <div className="pointer-events-none absolute bottom-0 left-1/4 h-64 w-64 rounded-full bg-primary/15 blur-3xl animate-float-slow" />
 
       <header className="relative w-full max-w-md flex items-center justify-between mb-8">
-        <div className="flex items-center gap-3">
-          <QrLogo className="h-14 w-auto object-contain animate-breathe bg-transparent" />
-          <div>
+        <div className="flex items-center gap-3 bg-transparent">
+          <QrLogo className="h-14 w-auto object-contain animate-float-logo bg-transparent border-0 border-transparent shadow-none rounded-none outline-none" />
+          <div className="bg-transparent">
             <QrWordmark size="xl" />
           </div>
         </div>
