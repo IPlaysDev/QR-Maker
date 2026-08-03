@@ -4,7 +4,7 @@ QR Maker is packaged with **Capacitor** so the same codebase runs as a web previ
 
 ## Prerequisites
 
-- Node.js 20+ and `bun` (or npm/pnpm)
+- **Node.js 20+** and `npm`
 - **Android Studio** (Hedgehog or newer) with:
   - Android SDK Platform 34+
   - Android SDK Build-Tools
@@ -14,7 +14,7 @@ QR Maker is packaged with **Capacitor** so the same codebase runs as a web previ
 ## 1. Install dependencies
 
 ```bash
-bun install
+npm install
 ```
 
 ## 2. Build the web assets
@@ -22,7 +22,7 @@ bun install
 Capacitor copies the contents of `dist/` into the Android project.
 
 ```bash
-bun run build
+npm run build
 ```
 
 ## 3. Android platform (already included)
@@ -79,7 +79,7 @@ Edit these in `capacitor.config.ts`, then re-run `npx cap sync android`.
 Place a 1024×1024 `icon.png` and a 2732×2732 `splash.png` in a `resources/` folder and run:
 
 ```bash
-bunx @capacitor/assets generate --android
+npx @capacitor/assets generate --android
 ```
 
 This regenerates all Android launcher icons and splash densities.

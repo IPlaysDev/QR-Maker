@@ -8,5 +8,5 @@ Update Credits page social links and branding
    - Ensure all social links remain clickable and use the existing `openLink` helper for native in-app browser support.
 
 2. Verify the change:
-   - Run `bun run build` to confirm no TypeScript/JSX errors.
+   - Run `npm run build` to confirm no TypeScript/JSX errors.
    - Check the preview to confirm the Credits page shows only the logo, "Developed by IPlaysDev", GitHub, Instagram, and YouTube links, and that the new links open correctly.
