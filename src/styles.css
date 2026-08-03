@@ -141,7 +141,7 @@
 }
 @keyframes float-logo {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-4px); }
 }
 @keyframes page-in-right {
   0% { opacity: 0; transform: translateX(40px) scale(0.98); filter: blur(6px); }
