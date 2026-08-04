@@ -1,0 +1,5 @@
+- `[x]` Delete obsolete Capacitor drawable folders (hundreds of images)
+- `[x]` Fix icon background and scaling
+- `[x]` Add missing Material Icons Extended library
+- `[x]` Simplify Android Theme and Manifest
+- `[/]` Final build in Android Studio
