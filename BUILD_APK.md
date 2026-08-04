@@ -76,13 +76,13 @@ Edit these in `capacitor.config.ts`, then re-run `npx cap sync android`.
 
 ## Icons & splash screens
 
-Place a 1024×1024 `icon.png` and a 2732×2732 `splash.png` in a `resources/` folder and run:
+The launcher icon is generated from `assets/icon.png` (the glass QR block logo you uploaded). If you ever replace it, use a 1024×1024 PNG and run:
 
 ```bash
-npx @capacitor/assets generate --android
+npx capacitor-assets generate --android
 ```
 
-This regenerates all Android launcher icons and splash densities.
+This regenerates all Android launcher icons and splash densities. The current icon has already been generated and synced into `android/app/src/main/res/`.
 
 ## Permissions
 
