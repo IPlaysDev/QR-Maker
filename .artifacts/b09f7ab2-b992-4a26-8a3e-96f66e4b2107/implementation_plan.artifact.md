@@ -1,50 +1,47 @@
-# Implementation Plan: Rewrite QR Maker in Native Kotlin
+# Implementation Plan: Fix Native Kotlin App Issues
 
-We are pivoting to a **100% Native Android** app using **Kotlin** and **Jetpack Compose**. This removes the "web bridge" entirely, making the app much faster, more reliable, and fixing all input/logo issues.
+The goal is to fix the broken logic in the native Kotlin app, specifically addressing the non-functional QR generation, the broken input field, and the unexpected scrolling behavior.
 
 ## User Review Required
 
 > [!IMPORTANT]
-> This will replace the "Web-based" logic with pure Kotlin code. You will no longer need `npm run build` or `npx cap sync`. You will build the app directly in Android Studio.
+> The current Kotlin code contains React/JavaScript syntax errors that were accidentally introduced. I will be replacing these with correct Jetpack Compose logic to fix the typing, pasting, and QR generation.
 
 ## Proposed Changes
 
-### 1. New Project Foundation
--   I will set up the **Jetpack Compose** environment within your existing `android/` folder.
--   I will add the **ZXing** library for high-quality QR code generation.
+### 1. Fix Input & Typing Issues
 
-### 2. Native UI Implementation (Jetpack Compose)
+#### [MODIFY] [MainActivity.kt](file:///C:/Users/NMKRV/StudioProjects/QR-Maker/android/app/src/main/java/dev/iplays/qrmaker/MainActivity.kt)
+-   **Remove React Syntax**: Replace `useRef`, `inputRef.current?.focus()`, and `ref={inputRef}` with proper Compose `FocusRequester`.
+-   **Fix Paste Logic**: Use the native `ClipboardManager` correctly within the `IconButton` click listener.
+-   **Fix Text Colors**: Ensure the text color is clearly visible (White) and the cursor is working.
+-   **Disable Horizontal Scroll**: Ensure the main layout doesn't exceed screen width to prevent side-scrolling.
 
-#### [NEW] `MainActivity.kt`
-The brain of the app. It will handle:
--   **Glassmorphism Theme**: A custom "Apple-style" glassy theme with real background blurs.
--   **QR Logic**: Instant generation as you type.
--   **Native Paste**: A button that talks directly to the Android Clipboard.
+### 2. Fix QR Generation
 
-#### [NEW] `CreditsActivity.kt`
-A beautiful native credits screen with social links that open directly in your apps.
+#### [MODIFY] [QRCodeGenerator.kt](file:///C:/Users/NMKRV/StudioProjects/QR-Maker/android/app/src/main/java/dev/iplays/qrmaker/QRCodeGenerator.kt)
+-   **Fix BitMatrix Access**: Change `bitMatrix[x, y]` to `bitMatrix.get(x, y)` which is the correct method for the ZXing library.
+-   **Optimize Bitmap Creation**: Ensure the QR code has high contrast (Pure Black on Pure White).
 
-### 3. Functional Features
--   **Native Share**: Uses the standard Android share sheet for images.
--   **Native Save**: Saves the QR code directly to your phone's Gallery/Downloads.
--   **Centered Icon**: We will use the black-background icon we already perfected.
+### 3. Layout Cleanup
 
-### 4. Cleanup
--   I will remove the old `public/`, `dist/`, and web-related scripts to keep the project clean.
+#### [MODIFY] [MainActivity.kt](file:///C:/Users/NMKRV/StudioProjects/QR-Maker/android/app/src/main/java/dev/iplays/qrmaker/MainActivity.kt)
+-   **Remove side-scrolling**: Use `Modifier.fillMaxWidth()` carefully and ensure no fixed-width components are wider than the screen.
+-   **Improve Touch Targets**: Ensure the input field and buttons are easy to tap.
 
 ## Execution Steps
 
-1.  **Dependencies**: Add Compose and QR libraries to `build.gradle`.
-2.  **Logic**: Implement the `QrGenerator` Kotlin class.
-3.  **UI**: Build the Main and Credits screens in Compose.
-4.  **Wiring**: Connect the Paste, Save, and Share actions.
-5.  **Final Build**: You will build the APK one last time in Android Studio.
+1.  **Clean MainActivity**: Remove all non-Kotlin code and implement proper Compose state and focus management.
+2.  **Repair QrGenerator**: Fix the ZXing integration logic.
+3.  **Refine UI**: Adjust padding and widths to prevent side-scrolling.
+4.  **Final Build**: Provide the user with the command to build the fixed APK.
 
 ## Verification Plan
 
 ### Manual Verification
 - You will build the APK and verify:
-    -   The app opens instantly (no blank screen).
-    -   Typing and Pasting works perfectly.
-    -   QR code generates correctly.
-    -   The UI looks "Premium Glassy" and matches the Apple aesthetic.
+    -   You can tap the box and the keyboard appears.
+    -   You can type "https://google.com" and see the letters.
+    -   The "Paste" button successfully inserts text from your clipboard.
+    -   The QR code appears instantly when you click "Generate".
+    -   The screen stays fixed and doesn't wiggle side-to-side.

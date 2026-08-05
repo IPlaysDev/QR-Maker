@@ -1,5 +1,3 @@
-- `[x]` Delete obsolete Capacitor drawable folders (hundreds of images)
-- `[x]` Fix icon background and scaling
-- `[x]` Add missing Material Icons Extended library
-- `[x]` Simplify Android Theme and Manifest
-- `[/]` Final build in Android Studio
+- `[x]` Fix `QRCodeGenerator.kt` (Zxing method fix)
+- `[x]` Fix `MainActivity.kt` (Remove React syntax, fix focus/paste, fix layout)
+- `[ ]` Clean and build the APK in terminal
