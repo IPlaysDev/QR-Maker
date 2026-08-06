@@ -1,6 +1,6 @@
 # QR Maker
 
-QR Maker is a fast, modern, and easy-to-use QR code generator that lets you create high-quality QR codes for almost any type of information in seconds.
+QR Maker is a fast, modern, and easy-to-use QR code generator App that lets you create high-quality QR codes for almost any type of information in seconds.
 
 ## Features
 
