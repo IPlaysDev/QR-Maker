@@ -1,29 +1,32 @@
-# Welcome to your Lovable project
+# QR Maker
 
-This project was built with [Lovable](https://lovable.dev).
+QR Maker is a fast, modern, and easy-to-use QR code generator that lets you create high-quality QR codes for almost any type of information in seconds.
 
-## Build with Lovable
+## Features
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+- 🔗 Generate QR codes for website URLs
+- 📝 Generate QR codes for plain text
+- 📧 Create QR codes for email addresses
+- 📞 Generate QR codes for phone numbers
+- 📍 Share locations with QR codes
+- 📶 Create Wi-Fi QR codes for instant network sharing
+- 📱 Generate QR codes for social media links
+- 📋 Encode contact information and other custom data
+- 💾 Download generated QR codes as high-quality PNG images
+- 📤 Share QR codes directly from the app
+- ⚡ Fast QR code generation with an intuitive interface
+- 📱 Responsive design for mobile devices
+- 🌏 Download the App from the realeses  section. 
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+## Screenshots
 
-## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
 
-## Built with
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+
+
+
+
+
+
