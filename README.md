@@ -19,7 +19,8 @@ QR Maker is a fast, modern, and easy-to-use QR code generator App that lets you 
 - 🌏 Download the App from the realeses  section. 
 
 ## Screenshots
-
+<img width="1079" height="1919" alt="1000026414" src="https://github.com/user-attachments/assets/ab6661ff-0db8-4396-b8e8-f482ce9a3f20" />
+<img width="1080" height="2040" alt="1000026419" src="https://github.com/user-attachments/assets/384377b7-7ebc-4536-9ad9-97ec05006516" />
 
 
 
